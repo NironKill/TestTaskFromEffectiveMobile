@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeliveryService.API</name>
+    </assembly>
+    <members>
+        <member name="M:DeliveryService.API.Controllers.OrderController.Create(DeliveryService.Application.Requests.Orders.Write.Create.CreateOrderDTO,DeliveryService.Application.Enums.District)">
+             <summary>
+             Creates the order
+             </summary>
+             <remarks>
+             Sample request:
+             POST /order/Create
+             {
+            
+                 weight: "order weight in kilograms",
+                 deliveryDateTime: "order delivery time (maximum 60 days)"
+             }
+             </remarks>
+             <param name="dto">CreateOrderDTO object</param>
+             <param name="district">Order district (enum)</param>
+             <returns>Returns CreateOrderResponse</returns>
+             <response code="201">Success</response>
+             <response code="400">The server could not understand the request due to incorrect syntax</response>
+        </member>
+        <member name="M:DeliveryService.API.Controllers.OrderController.Patch(System.Guid)">
+            <summary>
+            Change order status to completed
+            </summary>
+            <remarks>
+            Sample request:
+            PATCH /order/Patch/bd36fda0-37f4-4dd4-8cb0-c223847ef691
+            </remarks>
+            <param name="id">Order id (guid)</param>
+            <returns>Returns PatchOrderResponse</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:DeliveryService.API.Controllers.OrderController.Delete(System.Guid)">
+            <summary>
+            Delete the order
+            </summary>
+            <remarks>
+            Sample request:
+            DELETE /order/Delete/bd36fda0-37f4-4dd4-8cb0-c223847ef691
+            </remarks>
+            <param name="id">Order id (guid)</param>
+            <returns>Returns DeleteOrderResponse</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:DeliveryService.API.Controllers.OrderController.GetAll">
+            <summary>
+            Gets a list of all orders
+            </summary>
+            <remarks>
+            Sample request:
+            GET /order/GetAll
+            </remarks>
+            <returns>Returns GetAllOrderResponse</returns>
+            <response code="200">Success</response>
+        </member>
+        <member name="M:DeliveryService.API.Controllers.OrderController.GetById(System.Guid)">
+            <summary>
+            Gets the order by ID
+            </summary>
+            <remarks>
+            Sample request:
+            GET /order/GetById/bd36fda0-37f4-4dd4-8cb0-c223847ef691
+            </remarks>
+            <param name="id">Order id (guid)</param>
+            <returns>Returns GetByIdOrderResponse</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:DeliveryService.API.Controllers.OrderController.GetByDeliveryAreaAndTime(DeliveryService.Application.Enums.District,System.DateTime)">
+            <summary>
+            Get a list of orders by district and the time of the first order. 
+            Displays a list of orders to be delivered to a specific area of the city within half an hour after the time of the first order.
+            </summary>
+            <remarks>
+            Sample request:
+            GET /order/GetByDeliveryAreaAndTime?district=Partisans?firstDeliveryDateTime=yyyy-MM-ddTHH:mm:ss
+            </remarks>
+            <param name="district">Order district (enum)</param>
+            <param name="firstDeliveryDateTime">Order firstDeliveryDateTime (datetime)</param>
+            <returns>Returns GetByDeliveryAreaAndTimeOrderResponse</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+        </member>
+    </members>
+</doc>
